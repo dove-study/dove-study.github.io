@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"192.168.0.100","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="背景写blog虽然经历了N多不同时代的产品，恒久不变的始终是自己无人问津的网站。虽然没几个人看，还是隔断时间就要折腾一下。从最开始的wordpress，到tale，到现在的hexo，网站变得越来越简单，越来越轻量级，这里主要说说hexo的使用。hexo介绍主页： https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;主页中有非常详细的介绍，主页中有介绍内容我这里就不赘述了，这里主要说说主页中没有详细说明内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+Github,搭建属于自己的博客">
+<meta property="og:url" content="https://192.168.0.100/posts/7448c947.html">
+<meta property="og:site_name" content="Dove Studio">
+<meta property="og:description" content="背景写blog虽然经历了N多不同时代的产品，恒久不变的始终是自己无人问津的网站。虽然没几个人看，还是隔断时间就要折腾一下。从最开始的wordpress，到tale，到现在的hexo，网站变得越来越简单，越来越轻量级，这里主要说说hexo的使用。hexo介绍主页： https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;主页中有非常详细的介绍，主页中有介绍内容我这里就不赘述了，这里主要说说主页中没有详细说明内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-11T08:21:44.000Z">
+<meta property="article:modified_time" content="2020-04-25T15:00:07.902Z">
+<meta property="article:author" content="Will">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://192.168.0.100/posts/7448c947.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo+Github,搭建属于自己的博客 | Dove Studio</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dove Studio</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">鸽子工作室</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://192.168.0.100/posts/7448c947.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Will">
+      <meta itemprop="description" content="让距离成为距离的遐想，让彼此成为彼此的风景">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dove Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo+Github,搭建属于自己的博客
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-11 16:21:44" itemprop="dateCreated datePublished" datetime="2019-05-11T16:21:44+08:00">2019-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-25 23:00:07" itemprop="dateModified" datetime="2020-04-25T23:00:07+08:00">2020-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>写blog虽然经历了N多不同时代的产品，恒久不变的始终是自己无人问津的网站。虽然没几个人看，还是隔断时间就要折腾一下。从最开始的wordpress，到tale，到现在的hexo，网站变得越来越简单，越来越轻量级，这里主要说说hexo的使用。<br>hexo介绍<br>主页： <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a><br>主页中有非常详细的介绍，主页中有介绍内容我这里就不赘述了，这里主要说说主页中没有详细说明内容。</p>
+<p>hexo 可以理解为是基于node.js制作的一个博客工具，不是我们理解的一个开源的博客系统。其中的差别，有点意思。<br>hexo 正常来说，不需要部署到我们的服务器上，我们的服务器上保存的，其实是基于在hexo通过markdown编写的文章，然后hexo帮我们生成静态的html页面，然后，将生成的html上传到我们的服务器。简而言之：hexo是个静态页面生成、上传的工具。</p>
+<p>下面安装及使用的系统环境为Ubuntu。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>1 安装nodejs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br></pre></td></tr></table></figure>
+<p>2 安装git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<p>3 安装npm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<p>4 使用npm安装Hexo </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>5 下面开始生成blog</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>然后可以打开浏览器输入localhost:4000查看本地网站</p>
+<p>源码结构</p>
+<ul>
+<li>_config.yml 配置文件</li>
+<li>public      生成的静态文件，这个目录最终会发布到服务器</li>
+<li>scaffolds   一些通用的markdown模板</li>
+<li>source      编写的markdown文件，_drafts草稿文件，_posts发布的文章</li>
+<li>themes      博客的模板</li>
+</ul>
+<p>我们正常使用，修改最多的源码是_config.yml文件，不管是博客的基础配置，还是模板，都是修改这个文件。<br>source是我们日常写文章要用的目录，是我们日常操作的文件夹。<br>如果针对下载的模板修改，那么就需要操作themes了。hexo是用node.js编写的程序，所以theme的修改也是比较容易的。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="编写BLOG"><a href="#编写BLOG" class="headerlink" title="编写BLOG"></a>编写BLOG</h4><p>官方新编写BLOG，建议的是使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] <span class="string">"title"</span></span><br></pre></td></tr></table></figure>
+<p>其实，你可以直接在_drafts新建markdown文件，就是草稿了，在_posts新建markdown文件，就是发布的文章了。当然，记得在顶部加上相关的描述，效果和命令新建文件，是一样一样的。</p>
+<h4 id="模板安装和使用"><a href="#模板安装和使用" class="headerlink" title="模板安装和使用"></a>模板安装和使用</h4><p>hexo为我们提供了非常多好看实用的模板，官网提供了很多模板，但是，针对模板的使用，只进行了非常简单的说明，这里以我自己的使用的模板diaspora为例，进行详细的补充。</p>
+<p>其实，模板的使用，简单来说，只需要两个步骤：</p>
+<p>1 将模板copy到themes目录，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/Fechin/hexo-theme-diaspora.git diaspora</span><br></pre></td></tr></table></figure>
+<p>2 修改_config.yml中的theme：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: diaspora</span><br></pre></td></tr></table></figure>
+<p>所有的模板，共有的操作方式就只有这两个，但是不同的模板，会有很多不同的设置，这里就需要针对模板的使用说明进行修改了。建议通过github找到模板，看下readme。</p>
+<p>必要的时候需要更新主题<br>注意：请在更时主题时备份<code>_config.yml</code>配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/diaspora</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h4 id="新建文章模板"><a href="#新建文章模板" class="headerlink" title="新建文章模板"></a>新建文章模板</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">categories: </span><br><span class="line"><span class="bullet">    - </span>categorie</span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">    - </span>tag1</span><br><span class="line"><span class="bullet">    - </span>tag2</span><br><span class="line">mp3: </span><br><span class="line"><span class="bullet">    - </span>http://xxx.xxx.xxx/xxx.mp3</span><br><span class="line"><span class="bullet">    - </span>http://xxx.xxx.xxx/xxx.mp3</span><br><span class="line">cover: /img/cover.jpg</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建分类页"><a href="#创建分类页" class="headerlink" title="创建分类页"></a>创建分类页</h4><p>1 新建一个页面，命名为 Categories 。命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page Categories</span><br></pre></td></tr></table></figure>
+<p>2 编辑刚新建的页面，将页面的类型设置为 categories</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: Categories</span><br><span class="line">date: 2019-05-11 16:44:48</span><br><span class="line">type: "categories"</span><br></pre></td></tr></table></figure>
+<p>主题将自动为这个页面显示所有分类。</p>
+<h4 id="创建标签页"><a href="#创建标签页" class="headerlink" title="创建标签页"></a>创建标签页</h4><p>1 新建一个页面，命名为 Tags 。命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page Tags</span><br></pre></td></tr></table></figure>
+<p>2 编辑刚新建的页面，将页面的类型设置为 tags</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: Tags</span><br><span class="line">date: 2019-05-11 16:45:50</span><br><span class="line">type: "tags"</span><br></pre></td></tr></table></figure>
+<p>主题将自动为这个页面显示所有标签。</p>
+<h4 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 头部菜单，title: link</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">Categories:</span> <span class="string">/Categories</span></span><br><span class="line">  <span class="attr">Tags:</span> <span class="string">/Tags</span></span><br><span class="line">  <span class="attr">Github:</span> <span class="string">https://github.com/dove-studio</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>现在比较流行的方式，都是将代码发布到git，因为我同时要传到github和自己的博客，所有我的处理方式就是：先将代码传到github，再在自己的服务器获取github代码，服务器上自己部署一个nginx，解析静态网页即可。<br>1 首先注册github账号，比如dove-studio<br><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<p>2 然后创建一个新项目：<br>固定格式：dove-studio.github.io</p>
+<p>3 点击设置，创建一个page，选择一个主题，不过没什么用，反正马上就被覆盖掉了，这个时候访问一下链接，应该可以看到效果</p>
+<p>4 安装git插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>5 git的配置，修改_config.yml文件，使用SSH（非HTTPS）:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:dove-studio/dove-studio.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p>6 配置本地的ssh github私钥</p>
+<ul>
+<li>本地生成公钥私钥<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"dove-studio@qq.com"</span></span><br></pre></td></tr></table></figure></li>
+<li>添加公钥到 Github<br>根据上一步的提示，找到公钥文件（默认为id_rsa.pub），用记事本打开，全选并复制。<br>登录 Github，右上角 头像 -&gt; Settings —&gt; SSH keys —&gt; Add SSH key。把公钥粘贴到key中，填好title并点击 Add key。</li>
+<li>配置完成后输入命令进行测试<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+第一次还需要输入yes确认，等待片刻可看到成功提示。</li>
+</ul>
+<p>7 设置您账号的缺省身份标识</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">"dove-studio@qq.com"</span></span><br><span class="line">git config --global user.name <span class="string">"dove-studio"</span></span><br></pre></td></tr></table></figure>
+<p>如果仅在本仓库设置身份标识，则省略 –global 参数。<br>如果存在多个用户，需要设置配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gedit ~/.ssh/config</span><br></pre></td></tr></table></figure>
+<p>输入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User git</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_dove</span><br></pre></td></tr></table></figure>
+
+<p>8 将本地的文章通过hexo官方推荐的方式push到github：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这样应该就能在你的github上看到上传的代码了，这时看到的应该是纯静态的一个站点。<br>既然代码已经上传了，那么只要在我的服务器配置好github和ssh私钥，就能顺利的pull代码了，当然，还需要写个crontab定时来拉取，不需要自己登录服务器操作了。</p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="执行deploy命令了，但是代码未上传？"><a href="#执行deploy命令了，但是代码未上传？" class="headerlink" title="执行deploy命令了，但是代码未上传？"></a>执行deploy命令了，但是代码未上传？</h4><p>先执行<code>hexo generate</code>命令，生成静态文件了，再执行<code>hexo deploy</code>上传，上传是只会上传public中生成的文件。</p>
+<h4 id="修改了模板，但是没有生效？"><a href="#修改了模板，但是没有生效？" class="headerlink" title="修改了模板，但是没有生效？"></a>修改了模板，但是没有生效？</h4><p>修改了模板以后不生效，建议先<code>hexo clean</code>，然后再<code>hexo generate</code>。只执行hexo generate，可能模板后者静态文件不会被替换。</p>
+<h4 id="预览不太方便？"><a href="#预览不太方便？" class="headerlink" title="预览不太方便？"></a>预览不太方便？</h4><p>开发环境提供了实时预览的方式，不需要每次都generate，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate -w</span><br></pre></td></tr></table></figure>
+<p>系统会实时生成新的HTML，非常方便。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/6b81465a.html" rel="next" title="Ubuntu+LAMP服务器搭建">
+      Ubuntu+LAMP服务器搭建 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写BLOG"><span class="nav-number">3.1.</span> <span class="nav-text">编写BLOG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板安装和使用"><span class="nav-number">3.2.</span> <span class="nav-text">模板安装和使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建文章模板"><span class="nav-number">3.3.</span> <span class="nav-text">新建文章模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建分类页"><span class="nav-number">3.4.</span> <span class="nav-text">创建分类页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建标签页"><span class="nav-number">3.5.</span> <span class="nav-text">创建标签页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主题配置"><span class="nav-number">3.6.</span> <span class="nav-text">主题配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">4.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题"><span class="nav-number">5.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行deploy命令了，但是代码未上传？"><span class="nav-number">5.1.</span> <span class="nav-text">执行deploy命令了，但是代码未上传？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改了模板，但是没有生效？"><span class="nav-number">5.2.</span> <span class="nav-text">修改了模板，但是没有生效？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预览不太方便？"><span class="nav-number">5.3.</span> <span class="nav-text">预览不太方便？</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Will</p>
+  <div class="site-description" itemprop="description">让距离成为距离的遐想，让彼此成为彼此的风景</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Will</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">28k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">25 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
